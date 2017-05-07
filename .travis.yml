@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+- '7'
+
+env:
+  global:
+    - GITHUB_USER="beeman"
+    - GITHUB_REPO="tutorial-angular-deploy-to-github-pages"
+
+branches:
+   only:
+      - master
+
+before_script:
+   - npm install -g @angular/cli angular-cli-ghpages
+
+script:
+   - ng build --prod --base-href "https://$GITHUB_USER.github.io/$GITHUB_REPO/"
+   - ngh
